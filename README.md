@@ -63,18 +63,3 @@ has_one :shipping_address
 
 ###Association
 belongs_to :purchase
-
-
-## categories(active_hash)
-
-
-## sales_statuses(active_hash)
-
-
-## shipping_free_statuses(active_hash)
-
-
-## scheduled_deliveries(active_hash)
-
-
-## prefectures(active_hash)
