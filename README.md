@@ -16,7 +16,6 @@
 ### Association
 has_many :items
 has_many :purchases
-has_one :shipping_address
 
 
 ## itemsテーブル
@@ -33,14 +32,8 @@ has_one :shipping_address
 |prefecture_id           |integer    |null: false        |
 |scheduled_delivery_id   |integer    |null: false        |
 
-
 ### Association
 belongs_to :user
-belongs_to :category
-belongs_to :sales_status
-belongs_to :shipping_free_status
-belongs_to :prefecture
-belongs_to :scheduled_delivery
 has_one :purchase
 
 
@@ -54,6 +47,7 @@ has_one :purchase
 ### Association
 belongs_to :user
 belongs_to :item
+has_one :shipping_address
 
 ## shipping_addressesテーブル
 
@@ -65,34 +59,22 @@ belongs_to :item
 |addresses       |string     |null: false        |
 |building        |string     |                   |
 |phone_number    |string     |null: false        |    
-|user            |references |foreign_key :true  |
+|purchase        |references |foreign_key :true  |
 
 ###Association
-belongs_to :user
-belongs_to :prefecture
+belongs_to :purchase
 
 
 ## categories(active_hash)
-### Association
-has_many :items
 
 
 ## sales_statuses(active_hash)
-### Association
-has_many :items
 
 
 ## shipping_free_statuses(active_hash)
-### Association
-has_many :items
 
 
 ## scheduled_deliveries(active_hash)
-### Association
-has_many :items
 
 
 ## prefectures(active_hash)
-### Association
-has_many :items
-has_many :shipping_addresses
