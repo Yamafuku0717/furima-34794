@@ -144,7 +144,7 @@
               <%= item.name %>
             </h3>
             <div class='item-price'>
-              <span><%= "販売価格" %><%= item.price %>円<br><%= item.shipping_free_status.name %></span>
+              <span><%= item.price %>円<br><%= item.shipping_free_status.name %></span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
@@ -155,7 +155,7 @@
         </li>
       <% end %>
 
-      <% unless Item.exists? %>
+      <% if @items.empty? %>
         <li class='list'>
           <%= link_to '#' do %>
           <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
