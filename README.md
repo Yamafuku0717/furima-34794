@@ -41,8 +41,8 @@ has_one :purchase
 
 |Column          | Type      |Options            |
 |----------------|-----------|-------------------|
-|user            |references |foreign_key :true  |
-|item            |references |foreign_key :true  |
+|user            |references |foreign_key: true  |
+|item            |references |foreign_key: true  |
  
 ### Association
 belongs_to :user
@@ -59,7 +59,7 @@ has_one :shipping_address
 |addresses       |string     |null: false        |
 |building        |string     |                   |
 |phone_number    |string     |null: false        |    
-|purchase        |references |foreign_key :true  |
+|purchase        |references |foreign_key: true  |
 
 ###Association
 belongs_to :purchase
