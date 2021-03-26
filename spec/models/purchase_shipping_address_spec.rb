@@ -13,77 +13,77 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       expect(@purchase).to be_valid
     end
     it '建物名は空でも登録できること' do
-      @purchase.building = ""
+      @purchase.building = ''
       expect(@purchase).to be_valid
     end
     it '郵便番号が半角数字と半角のハイフンを含んだ正しい形式であれば登録できる' do
-      @purchase.postal_code = "123-4567"
-      expect(@purchase.errors.full_messages).to include()
+      @purchase.postal_code = '123-4567'
+      expect(@purchase.errors.full_messages).to include
     end
     it '郵便番号が空では登録できないこと' do
-      @purchase.postal_code = ""
+      @purchase.postal_code = ''
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Postal code can't be blank")
     end
     it '郵便番号に全角文字が含まれている場合登録できないこと' do
-      @purchase.postal_code = "123-ああああ"
+      @purchase.postal_code = '123-ああああ'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+      expect(@purchase.errors.full_messages).to include('Postal code is invalid')
     end
     it '郵便番号に半角文字が含まれている場合登録できない' do
-      @purchase.postal_code = "123-ｱｱｱｱ"
+      @purchase.postal_code = '123-ｱｱｱｱ'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+      expect(@purchase.errors.full_messages).to include('Postal code is invalid')
     end
     it '郵便番号にハイフン以外の記号が含まれている場合登録できない' do
-      @purchase.postal_code = "123-.,:@"
+      @purchase.postal_code = '123-.,:@'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+      expect(@purchase.errors.full_messages).to include('Postal code is invalid')
     end
     it '郵便番号にハイフンが含まれていない場合登録できない' do
-      @purchase.postal_code = "1234567"
+      @purchase.postal_code = '1234567'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+      expect(@purchase.errors.full_messages).to include('Postal code is invalid')
     end
     it '都道府県を選択していないと登録できないこと' do
-      @purchase.prefecture_id = "1"
+      @purchase.prefecture_id = '1'
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Prefecture can' be blank")
     end
     it '市町村区が空では登録できないこと' do
-      @purchase.city = ""
+      @purchase.city = ''
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("City can't be blank")
     end
     it '番地が空では登録できないこと' do
-      @purchase.addresses = ""
+      @purchase.addresses = ''
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Addresses can't be blank")
     end
     it '電話番号が12桁以上の場合登録できないこと' do
-      @purchase.phone_number = "123456789011"
+      @purchase.phone_number = '123456789011'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      expect(@purchase.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
     end
     it '電話番号に全角文字が含まれている場合登録できないこと' do
-      @purchase.phone_number = "12345ああああ"
+      @purchase.phone_number = '12345ああああ'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is not a number")
+      expect(@purchase.errors.full_messages).to include('Phone number is not a number')
     end
     it '電話番号に全角数字が含まれている場合登録できないこと' do
-      @purchase.phone_number = "12345６７８９"
+      @purchase.phone_number = '12345６７８９'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is not a number")
+      expect(@purchase.errors.full_messages).to include('Phone number is not a number')
     end
     it '電話番号に半角文字が含まれている場合登録できないこと' do
-      @purchase.phone_number = "1234aaaa"
+      @purchase.phone_number = '1234aaaa'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is not a number")
+      expect(@purchase.errors.full_messages).to include('Phone number is not a number')
     end
     it '電話番号に記号が含まれている場合登録できないこと' do
-      @purchase.phone_number = "1234-5678"
+      @purchase.phone_number = '1234-5678'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is not a number")
+      expect(@purchase.errors.full_messages).to include('Phone number is not a number')
     end
     it 'tokenが空では登録できないこと' do
       @purchase.token = nil
