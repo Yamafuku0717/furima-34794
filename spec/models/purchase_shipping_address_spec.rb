@@ -46,7 +46,7 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       expect(@purchase.errors.full_messages).to include('Postal code is invalid')
     end
     it '都道府県を選択していないと登録できないこと' do
-      @purchase.prefecture_id = '1'
+      @purchase.prefecture_id = 1
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Prefecture can' be blank")
     end
@@ -89,6 +89,16 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       @purchase.token = nil
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Token can't be blank")
+    end
+    it 'item_idが空では登録できない' do
+      @purchase.item_id = ""
+      @purchase.valid?
+      expect(@purchase.errors.full_messages).to include("Item can't be blank")
+    end
+    it 'user_idが空では登録できない' do
+      @purchase.user_id = ""
+      @purchase.valid?
+      expect(@purchase.errors.full_messages).to include("User can't be blank")
     end
   end
 end
