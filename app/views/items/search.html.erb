@@ -11,16 +11,16 @@
       <%= f.label :category_id_eq, 'カテゴリー', class: "weight-bold-text" %>
       <%= f.collection_select :category_id_eq, @category, :id, :name,  include_blank: '指定なし' %>
       <br>
-      <%= f.label :sales_status_id_eq, '商品の状態：', class: "weight-bold-text" %>
+      <%= f.label :sales_status_id_eq, '商品の状態', class: "weight-bold-text" %>
       <%= f.collection_select :sales_status_id_eq, @sales_status, :id, :name, include_blank: '指定なし'%>
       <br>
-      <%= f.label :shipping_free_status_id_eq, '配送料の負担：', class: "weight-bold-text" %>
+      <%= f.label :shipping_free_status_id_eq, '配送料の負担', class: "weight-bold-text" %>
       <%= f.collection_select :shipping_free_status_id_eq, @shipping_free_status, :id, :name, include_blank: '指定なし'%>
       <br>
-      <%= f.label :prefecture_id_eq, '発送元の地域：', class: "weight-bold-text" %>
+      <%= f.label :prefecture_id_eq, '発送元の地域', class: "weight-bold-text" %>
       <%= f.collection_select :prefecture_id_eq, @prefecture, :id, :name, include_blank: '指定なし' %>
       <br>
-      <%= f.label :scheduled_delivery_id_eq, '発送までの日数：', class: "weight-bold-text" %>
+      <%= f.label :scheduled_delivery_id_eq, '発送までの日数', class: "weight-bold-text" %>
       <%= f.collection_select :scheduled_delivery_id_eq, @scheduled_delivery, :id, :name, include_blank: '指定なし' %>
       <br>
       <%= f.label :price, '価格：', class: "weight-bold-text" %>
@@ -50,7 +50,10 @@
             <%= result.name %>
           </h3>
           <div class='item-price'>
-            <span><%= result.price %>円<br><%= result.shipping_free_status.name %></span>
+            <ul>
+              <span class="result-price"><%= result.price %></span><span>円</span>
+              <li><%= result.shipping_free_status.name %></li>
+            </ul>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>

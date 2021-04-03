@@ -15,9 +15,10 @@
       <% end %>
     </div>
     <div class="item-price-box">
-      <span class="item-price">
-        ¥ <%= @item.price %>
-      </span>
+      <div class="price-wrapper">
+      <span class="price-mark">¥</span>
+      <span class="item-price"><%= @item.price %></span>
+      </div>
       <span class="item-postage">
         <%= @item.shipping_free_status.name %>
       </span>
