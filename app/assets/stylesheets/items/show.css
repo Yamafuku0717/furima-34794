@@ -40,9 +40,18 @@
   flex-direction: column;
 }
 
-.item-price-box>.item-price {
+.price-wrapper>.item-price {
   font-size: 4vh;
   font-weight: bold;
+}
+
+.price-mark{
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.price-wrapper{
+  display: flex;
 }
 
 .item-price-box>.item-postage {

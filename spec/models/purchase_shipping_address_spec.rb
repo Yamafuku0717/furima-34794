@@ -50,7 +50,8 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it '都道府県を選択していないと登録できないこと' do
         @purchase.prefecture_id = 1
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Prefecture can' be blank")
+        binding.pry
+        expect(@purchase.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it '市町村区が空では登録できないこと' do
         @purchase.city = ''

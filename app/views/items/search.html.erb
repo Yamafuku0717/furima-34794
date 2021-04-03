@@ -1,0 +1,69 @@
+<%= render "shared/header", p: @p %>
+<div class="search-result">
+  <div class="search-form2">
+    <div class="title-wrapper">
+    <%= image_tag "472_s_h.png", class: "search-icon2" %>
+    <h1 class="search-title">
+      商品検索
+    </h1>
+    </div>
+    <%= search_form_for @p, url: search_items_path do |f| %>
+      <%= f.label :category_id_eq, 'カテゴリー', class: "weight-bold-text" %>
+      <%= f.collection_select :category_id_eq, @category, :id, :name,  include_blank: '指定なし' %>
+      <br>
+      <%= f.label :sales_status_id_eq, '商品の状態', class: "weight-bold-text" %>
+      <%= f.collection_select :sales_status_id_eq, @sales_status, :id, :name, include_blank: '指定なし'%>
+      <br>
+      <%= f.label :shipping_free_status_id_eq, '配送料の負担', class: "weight-bold-text" %>
+      <%= f.collection_select :shipping_free_status_id_eq, @shipping_free_status, :id, :name, include_blank: '指定なし'%>
+      <br>
+      <%= f.label :prefecture_id_eq, '発送元の地域', class: "weight-bold-text" %>
+      <%= f.collection_select :prefecture_id_eq, @prefecture, :id, :name, include_blank: '指定なし' %>
+      <br>
+      <%= f.label :scheduled_delivery_id_eq, '発送までの日数', class: "weight-bold-text" %>
+      <%= f.collection_select :scheduled_delivery_id_eq, @scheduled_delivery, :id, :name, include_blank: '指定なし' %>
+      <br>
+      <%= f.label :price, '価格：', class: "weight-bold-text" %>
+      <%= f.radio_button :price_lteq, '' %>
+      指定なし
+      <%= f.radio_button :price_lteq, '1000' %>
+      1000円以下
+      <%= f.radio_button :price_lteq, '2500' %>
+      2500円以下
+      <%= f.radio_button :price_lteq, '5000' %>
+      5000円以下
+      <br>
+      <%= f.submit '検索' %>
+      <br>
+    <% end %>
+  </div>
+  <ul class="item-lists">
+  <% if @results.present? %>
+    <% @results.each do |result| %>
+      <li class='list'>
+        <%= link_to item_path(result) do %>
+        <div class='item-img-content'>
+          <%= image_tag result.image, class: "item-img" %>
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= result.name %>
+          </h3>
+          <div class='item-price'>
+            <ul>
+              <span class="result-price"><%= result.price %></span><span>円</span>
+              <li><%= result.shipping_free_status.name %></li>
+            </ul>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+<%= render "shared/footer" %>
